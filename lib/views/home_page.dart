@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager_app/widgets/custom_card.dart';
+import 'package:task_manager_app/views/add_note_page.dart';
+import 'package:task_manager_app/widgets/note_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
         child: ListView.builder(
           itemCount: 5,
           itemBuilder: (context, index) {
-            return const CustomNote();
+            return const NoteCard();
           },
         ),
       ),
@@ -30,7 +31,13 @@ class HomePage extends StatelessWidget {
           iconSize: 35,
           backgroundColor: Colors.black,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AddNotePage(),
+              ));
+        },
         icon: const Icon(
           Icons.add,
           color: Colors.white,

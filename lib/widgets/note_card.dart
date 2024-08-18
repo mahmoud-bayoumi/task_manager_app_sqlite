@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager_app/views/edit_note_page.dart';
 
-class CustomNote extends StatelessWidget {
-  const CustomNote({super.key});
+class NoteCard extends StatelessWidget {
+  const NoteCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,13 @@ class CustomNote extends StatelessWidget {
           ),
           child: ListTile(
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EditNotePage(),
+                    ));
+              },
               icon: const Icon(
                 Icons.edit,
                 size: 30,
