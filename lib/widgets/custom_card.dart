@@ -9,33 +9,40 @@ class CustomNote extends StatelessWidget {
       padding: const EdgeInsets.only(
         top: 15,
       ),
-      child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(16),
-          ),
-        ),
-        child: ListTile(
-          trailing: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.edit,
-              size: 30,
+      child: GestureDetector(
+        onTap: () {},
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(
+              Radius.circular(16),
             ),
           ),
-          title: const Text(
-            'BigTitle',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+          child: ListTile(
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.edit,
+                size: 30,
+              ),
             ),
-          ),
-          subtitle: const Text(
-            'SubTitle',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w300,
+            title: const Text(
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              'BigTitle',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: const Text(
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              'SubTitle',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w300,
+              ),
             ),
           ),
         ),
