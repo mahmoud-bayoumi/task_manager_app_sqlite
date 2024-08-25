@@ -1,8 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager_app/widgets/custom_text_field.dart';
+import 'package:untitled1/views/home_page.dart';
+import 'package:untitled1/views/sql_database.dart';
+import '../widgets/custom_text_field.dart';
+class EditNotePage extends StatefulWidget {
+  final id;
+  final title;
+  final subtitle;
+  final describ;
 
-class EditNotePage extends StatelessWidget {
-  const EditNotePage({super.key});
+   EditNotePage({super.key, this.id, this.title, this.subtitle, this.describ });
+
+  @override
+  State<EditNotePage> createState() => _EditNotePageState();
+}
+
+class _EditNotePageState extends State<EditNotePage> {
+  SqlDataBase sql=SqlDataBase();
+  TextEditingController titleeditcontroller=TextEditingController();
+
+   TextEditingController subtitleeditcontroller=TextEditingController();
+
+   TextEditingController describtioneditcontroller=TextEditingController();
+
+  @override
+  void initState() {
+    titleeditcontroller.text=widget.title;
+    subtitleeditcontroller.text=widget.subtitle;
+    describtioneditcontroller.text=widget.describ;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +45,22 @@ class EditNotePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
+          child:
+           Column(
             children: [
-              const CustomTextField(
+               CustomTextField(
+                hintText: "  ",
+                 controller:titleeditcontroller ,
                   // real title from database
                   ),
-              const CustomTextField(
+               CustomTextField(
+                hintText:"  " ,
+                  controller:subtitleeditcontroller ,
                   // subtitle from database
                   ),
-              const CustomTextField(
+               CustomTextField(
+                controller: describtioneditcontroller,
+                hintText: "  ",
                 maxLines: 12,
                 // description from database
               ),
@@ -35,7 +68,19 @@ class EditNotePage extends StatelessWidget {
                 height: 60,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () async {
+               int response= await sql.updataData('''
+                 UPDATE 'notes' SET title = "${titleeditcontroller.text}" ,
+                 subtitle = "${subtitleeditcontroller.text}",
+                 describ ="${describtioneditcontroller.text}"
+                  WHERE id= "${widget.id}"
+               ''');
+               if(response>0){
+                 Navigator.push(context,
+                     MaterialPageRoute(builder: (context) => HomePage(),));
+               }
+               print(response);
+                },
                 color: Colors.black,
                 textColor: const Color(0xffFED42C),
                 minWidth: 150,
