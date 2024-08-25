@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
+  final TextEditingController controller;
   final int minLines, maxLines;
   const CustomTextField({
     super.key,
-    this.hintText = '',
+    required this.hintText ,
     this.maxLines = 1,
     this.minLines = 1,
+    required this.controller,
   });
 
   @override
@@ -15,6 +17,7 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15),
       child: TextField(
+        controller: controller,
         maxLines: maxLines,
         minLines: 1,
         decoration: InputDecoration(
