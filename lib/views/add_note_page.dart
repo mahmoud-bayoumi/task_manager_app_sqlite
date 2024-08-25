@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager_app/widgets/custom_text_field.dart';
+import 'package:untitled1/views/home_page.dart';
+import 'package:untitled1/views/sql_database.dart';
+import '../widgets/custom_text_field.dart';
 
 class AddNotePage extends StatelessWidget {
-  const AddNotePage({super.key});
+  SqlDataBase sql=SqlDataBase();
+  final TextEditingController titlecontroller=TextEditingController();
+  final TextEditingController subtitlecontroller=TextEditingController();
+  final TextEditingController describtioncontroller=TextEditingController();
+   AddNotePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +27,30 @@ class AddNotePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             children: [
-              const CustomTextField(
-                hintText: 'Note Title',
+               CustomTextField(
+                hintText: 'Note Title',controller: titlecontroller,
               ),
-              const CustomTextField(hintText: 'Subtitle'),
-              const CustomTextField(
+               CustomTextField(hintText: 'Subtitle',controller: subtitlecontroller),
+               CustomTextField(
                 maxLines: 12,
-                hintText: 'Description',
+                hintText: 'Description',controller: describtioncontroller,
               ),
               const SizedBox(
                 height: 60,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () async {
+                int response= await  sql.insertData('''
+                 INSERT INTO 'notes' ('title','subtitle','describ')
+                 VALUES ('${titlecontroller.text }','${subtitlecontroller.text}','${describtioncontroller.text}' ) 
+                ''');
+                if(response>0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
+
+                }
+                print(response);
+
+                },
                 color: Colors.black,
                 textColor: const Color(0xffFED42C),
                 minWidth: 150,
