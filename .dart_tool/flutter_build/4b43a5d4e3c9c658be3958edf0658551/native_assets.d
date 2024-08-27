@@ -1,0 +1,1 @@
+ C:\\Apps\\task_manager_app_sqlite-2\\.dart_tool\\flutter_build\\4b43a5d4e3c9c658be3958edf0658551\\native_assets.yaml: 
