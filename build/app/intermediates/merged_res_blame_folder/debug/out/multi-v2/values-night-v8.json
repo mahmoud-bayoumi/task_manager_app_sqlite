@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.task_manager_app-mergeDebugResources-5:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.task_manager_app-mergeDebugResources-25:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Apps\\task_manager_app_sqlite-2\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\Mohamed\\Downloads\\task_manager_app_sqlite-3\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

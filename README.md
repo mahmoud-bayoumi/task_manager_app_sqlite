@@ -1,4 +1,4 @@
-# task_manager_app_sqlite_master
+# task_manager_app
 
 A new Flutter project.
 
